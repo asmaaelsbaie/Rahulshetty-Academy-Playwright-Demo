@@ -7,7 +7,8 @@ export class PlaceOrderPage {
     private readonly expireDateSelection2: Locator;
     private readonly csvNumber: Locator;
     private readonly nameOnCard: Locator;
-
+    private readonly country: Locator;
+    private readonly suggationList: Locator;
     constructor(page: Page) {
         this.creditCardNumber = page
             .locator('.field')
@@ -31,8 +32,11 @@ export class PlaceOrderPage {
             .locator('.field')
             .filter({ hasText: 'Name on Card' })
             .locator('input');
+        this.country = page.getByPlaceholder("Select Country");
+        this.suggationList = page.locator(".ta-results.list-group.ng-star-inserted");
 
     }
+
     async enterCrediteCardNumber(cardNumber: string) {
         await this.creditCardNumber.fill(cardNumber);
     }
@@ -46,5 +50,9 @@ export class PlaceOrderPage {
     }
     async enterNameCard(nameCard: string) {
         await this.nameOnCard.fill(nameCard);
+    }
+    async selectConutry(partial: string, country: string) {
+        await this.country.pressSequentially(partial, { delay: 100 });
+        await this.suggationList.filter({ hasText: country }).click();
     }
 }
