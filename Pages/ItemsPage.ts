@@ -3,10 +3,11 @@ import { Page } from "@playwright/test";
 export class ItemPage {
     private readonly card: Locator;
     private readonly addtocartButton: Locator;
-
+    private readonly checkoutButton: Locator;
     constructor(page: Page) {
         this.card = page.locator(".card");
         this.addtocartButton = page.locator('[routerlink="/dashboard/cart"]');
+        this.checkoutButton = page.getByRole("button", { name: "Checkout" });
 
 
     }
@@ -19,5 +20,8 @@ export class ItemPage {
     }
     async clickOnCartButton() {
         await this.addtocartButton.click();
+    }
+    async clickOnCheckButton() {
+        await this.checkoutButton.click();
     }
 }

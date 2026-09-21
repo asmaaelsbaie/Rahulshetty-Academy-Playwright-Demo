@@ -1,5 +1,5 @@
 import { LoginPage } from "../Pages/LoginPage";
-import { Page } from "@playwright/test";
+import { expect, Page } from "@playwright/test";
 import { RegisterPageSteps } from "./RegisterPageSteps";
 
 export class LoginPageSteps extends RegisterPageSteps {
@@ -13,5 +13,13 @@ export class LoginPageSteps extends RegisterPageSteps {
         await this.loginPage.enterPassword(password);
         await this.loginPage.clickOnLogin();
 
+    }
+    async verifyLoginDone() {
+        await this.loginPage.verifyLoginPage();
+    }
+    async loginWithYourEnteredData(email: string, password: string) {
+        await this.openLoginPage();
+        await this.LoginData(email, password);
+        await this.verifyLoginDone();
     }
 }

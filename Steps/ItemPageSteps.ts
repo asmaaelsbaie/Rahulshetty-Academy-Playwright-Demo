@@ -1,7 +1,8 @@
 import { ItemPage } from "../Pages/ItemsPage"
 import { Page } from "@playwright/test";
 import { LoginPageSteps } from "./LoginPageSteps";
-export class ItemPageSteps extends LoginPageSteps {
+
+export class ItemPageSteps extends LoginPageSteps  {
     private readonly itemPage;
     constructor(page: Page) {
         super(page);
@@ -13,7 +14,12 @@ export class ItemPageSteps extends LoginPageSteps {
     async varifyAddedItem() {
         await this.itemPage.verifyItemAddtoCart();
     }
-    async openCartPage() {
+    async goToPlaceOrderPage() {
         await this.itemPage.clickOnCartButton();
+        await this.itemPage.clickOnCheckButton();
+    }
+    async addItemWithYourEnteredData(itemName: string) {
+        await this.addItemTocart(itemName)
+        await this.varifyAddedItem();
     }
 }

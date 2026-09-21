@@ -28,4 +28,9 @@ export class RegisterPageSteps {
    async openLoginPage() {
       await this.registerPage.clickOnLogin();
    }
+   async registerWithYourEnteredData(firstName: string, lastName: string, email: string, phoneNumber: string, occupationSelector: string, password: string) {
+      await this.openRegisterPage();
+      await this.enterYourData(firstName, lastName, email, phoneNumber, occupationSelector, password);
+      await this.assertSuccessMessage();
+   }
 }

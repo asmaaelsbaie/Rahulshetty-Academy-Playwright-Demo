@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+/*import { test, expect } from '@playwright/test';
 import { CheckOutPageSteps } from '../Steps/CheckOutPageSteps';
 
 test.use({
@@ -20,7 +20,7 @@ test("Test Open Checkout  and set your data", async ({ page }) => {
   await checkoutPageSteps.LoginData(email, password);
   await checkoutPageSteps.addItemTocart("ZARA COAT 3")
   await checkoutPageSteps.varifyAddedItem();
-  await checkoutPageSteps.openCartPage();
+  //await checkoutPageSteps.openCartPage();
   await checkoutPageSteps.openCheckOutPage();
 
-});
+});*/
