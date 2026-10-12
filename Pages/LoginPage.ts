@@ -11,8 +11,13 @@ export class LoginPage extends RegisterPage {
 
     private readonly loginPage: Page;
 
-    async verifyLoginPage(){
-        await expect(this.loginPage).toHaveURL(/dashboard/)
+    async verifyLoginPage(validity:string){
+          if (String(validity).toLowerCase() === "valid") {
+            await expect(this.loginPage).toHaveURL(/dashboard/);
+        } else {
+            await expect(this.loginPage.getByText(/Incorrect email or password| *Enter Valid Email/)).toBeVisible();
+        }
+        
     }
 
 }

@@ -10,15 +10,15 @@ export class RegisterPageSteps {
       await this.registerPage.OpenPage();
       await this.registerPage.clickOnRegister();
    }
-   async enterYourData(firstName: string, lastName: string, email: string, phoneNumber: string, occupationSelector: string, password: string) {
-      await this.registerPage.enterFirstName(firstName);
-      await this.registerPage.enterLastName(lastName);
-      await this.registerPage.enterEmail(email);
-      await this.registerPage.enterPhoneNumber(phoneNumber);
-      await this.registerPage.selectOccpation(occupationSelector);
+   async enterYourData(testData:any) {
+      await this.registerPage.enterFirstName(testData.firstName);
+      await this.registerPage.enterLastName(testData.lastName);
+      await this.registerPage.enterEmail(testData.email);
+      await this.registerPage.enterPhoneNumber(testData.phoneNumber);
+      await this.registerPage.selectOccpation(testData.occupationSelector);
       await this.registerPage.selectFemaleGender();
-      await this.registerPage.enterPassword(password);
-      await this.registerPage.enterPasswordConfirm(password);
+      await this.registerPage.enterPassword(testData.password);
+      await this.registerPage.enterPasswordConfirm(testData.password);
       await this.registerPage.checkerfor18yearsOrOlder();
       await this.registerPage.clickOnRegisterButton();
    }
@@ -28,9 +28,9 @@ export class RegisterPageSteps {
    async openLoginPage() {
       await this.registerPage.clickOnLogin();
    }
-   async registerWithYourEnteredData(firstName: string, lastName: string, email: string, phoneNumber: string, occupationSelector: string, password: string) {
+   async registerWithYourEnteredData(testData:any) {
       await this.openRegisterPage();
-      await this.enterYourData(firstName, lastName, email, phoneNumber, occupationSelector, password);
+      await this.enterYourData(testData);
       await this.assertSuccessMessage();
    }
 }

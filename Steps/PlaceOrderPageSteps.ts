@@ -8,11 +8,15 @@ export class PlaceOrderSteps extends CheckOutPageSteps {
         super(page);
         this.placeOrderPage = new PlaceOrderPage(page);
     }
-    async enterPlaceOrderData(cardNumber: string, select1: string, select2: string, csvNumber: string, nameCard: string, partial: string, countryFullName: string) {
-        await this.placeOrderPage.enterCrediteCardNumber(cardNumber);
-        await this.placeOrderPage.enterExpiredateSelection(select1, select2);
-        await this.placeOrderPage.enterCsvNumber(csvNumber);
-        await this.placeOrderPage.enterNameCard(nameCard);
-        await this.placeOrderPage.selectConutry(partial, countryFullName);
+    async enterPlaceOrderData(testData:any) {
+        await this.placeOrderPage.enterCrediteCardNumber(testData.creditCardNumber);
+        await this.placeOrderPage.enterExpiredateSelection(testData.expiryDateSelect1, testData.expiryDateSelect2);
+        await this.placeOrderPage.enterCsvNumber(testData.csvNumber);
+        await this.placeOrderPage.enterNameCard(testData.nameCard);
+        await this.placeOrderPage.selectConutry(testData.partial, testData.countryFullName);
+    }
+    async completePlaceOrder() {
+        await this.placeOrderPage.clickPlaceOrderButton();
+        await this.placeOrderPage.verifyOrderPlaced();
     }
 }

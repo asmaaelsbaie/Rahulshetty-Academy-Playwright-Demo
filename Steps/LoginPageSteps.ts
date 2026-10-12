@@ -14,12 +14,14 @@ export class LoginPageSteps extends RegisterPageSteps {
         await this.loginPage.clickOnLogin();
 
     }
-    async verifyLoginDone() {
-        await this.loginPage.verifyLoginPage();
+    async verifyLoginDone(validity:string) {
+        await this.loginPage.verifyLoginPage(validity);
     }
-    async loginWithYourEnteredData(email: string, password: string) {
+    async loginWithYourEnteredData(testData:any) {
+
+        await this.loginPage.OpenPage();
         await this.openLoginPage();
-        await this.LoginData(email, password);
-        await this.verifyLoginDone();
+        await this.LoginData(testData.email, testData.password);
+        await this.verifyLoginDone(testData.validity);
     }
 }
