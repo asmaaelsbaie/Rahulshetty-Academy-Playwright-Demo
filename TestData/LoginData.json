@@ -1,0 +1,17 @@
+[
+    {
+        "email": "Asmaa9243@gmail.com",
+        "password": "Test@1234",
+        "validity":"valid"
+    },
+    {
+        "email": " asmaa ",
+        "password": "44 ",
+        "validity":"invalid"
+    },
+    {
+        "email": "Asmaa9243@gmail.com",
+        "password": "Tt@1234",
+        "validity":"invalid"
+    }
+]
